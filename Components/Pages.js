@@ -1,10 +1,10 @@
 import { createElement, render, insertElement } from "../Core/Core.js"; // Import the render function
 
 const container = document.querySelector("#root");
-import header from "./Header.js";
+import Header from "./Header.js";
 import { router } from "../App.js";
 import Car from "./Car.js";
-
+const header = new Header();
 
 class Home {
 
@@ -16,7 +16,7 @@ class Home {
         element.textContent = 'Home Page';
         container.appendChild(element); // Append the element to the container
         // Render the header
-        render(header, container);
+        render(header.render(), container);
         return element;
     }
 }
@@ -38,7 +38,7 @@ class CarView{
             const carComponent = new Car(car);
             carComponent.mount(carContainer);
         });
-        render(header, container);
+        render(header.render(), container);
         return section
     }
 }
@@ -50,7 +50,7 @@ class About {
         container.appendChild(element); // Append the element to the container
         
         // Render the header
-        render(header, container);
+        render(header.render(), container);
         return element;
     }
 }
