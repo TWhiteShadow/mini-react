@@ -26,11 +26,18 @@ function insertElement(parent, element){
 }
 
 function render(element, container) {
-    const dom = createRenderElement(element);
-    container.appendChild(dom);
+    if (typeof element === 'string') {
+        container.insertAdjacentHTML('beforeend', element);
+    } else {
+        const dom = createRenderElement(element);
+        container.appendChild(dom);
+    }
 }
 
+
+
 function createRenderElement(element) {
+    // console.log(element);
     const dom = 
         element.type === "TEXT_ELEMENT"
         ? document.createTextNode(element.props.nodeValue)

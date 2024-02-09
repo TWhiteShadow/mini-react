@@ -1,7 +1,9 @@
 import { render , createRenderElement} from '../Core/Core.js'
 
 class Component {
+    
     constructor(props) {
+        this.container = document.querySelector('#root');
         this.props = props;
         this.state = this.state || {};
     }

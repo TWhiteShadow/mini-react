@@ -26,10 +26,10 @@ class Car extends Component {
     render() {
         return createElement("div", { class: "car", "data-id": `${this.state.id}` },
             createElement("h2", null, '{{model}}'.interpolate(this.state)),
-            createElement("p", null, `Color: ${this.state.color}`),
-            createElement("p", null, `Year: ${this.state.year}`),
-            createElement("p", null, `Mileage: ${this.state.mileage}`),
-            createElement("p", null, `Click Counter: ${this.state.count}`),
+            createElement("p", null, `Color: ${'{{color}}'.interpolate(this.state)}`),
+            createElement("p", null, `Year: ${'{{year}}'.interpolate(this.state)}`),
+            createElement("p", null, `Mileage: ${'{{mileage}}'.interpolate(this.state)}`),
+            createElement("p", null, `Click Counter: ${'{{count}}'.interpolate(this.state)}`),
 
             createElement("button", { onClick : (e => this.handleClick()), id: `button-${this.state.id}`}, "Increase Click")
         );
