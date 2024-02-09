@@ -1,4 +1,5 @@
 import { createElement, render, insertElement } from "../Core/Core.js"; // Import the render function
+import Page from './Page.js';
 
 const container = document.querySelector("#root");
 import Header from "./Header.js";
@@ -6,7 +7,7 @@ import { router } from "../App.js";
 import Car from "./Car.js";
 const header = new Header();
 
-class Home {
+class Home extends Page{
 
     render() {
        
@@ -20,7 +21,7 @@ class Home {
         return element;
     }
 }
-class CarView{
+class CarView extends Page{
     render(){
         const section =  document.createElement('div');
         section.id = "section1"
@@ -43,7 +44,7 @@ class CarView{
     }
 }
 
-class About {
+class About extends Page {
     render() {
         const element = document.createElement('div');
         element.textContent = 'About Page';
@@ -55,7 +56,7 @@ class About {
     }
 }
 
-class NotFound {
+class NotFound extends Page {
     render() {
         const element = document.createElement('div');
         element.textContent = '404 - Page Not Found';
