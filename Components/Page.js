@@ -1,5 +1,8 @@
-class Page {
+import Component from "./Component.js";
+
+class Page extends Component{
     constructor() {
+        super()
         this.component = null;
     }
     // Method to set the component
