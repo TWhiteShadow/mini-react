@@ -1,4 +1,4 @@
-import { render , createRenderElement} from './Core.js'
+import { render , createRenderElement} from './Dom.js'
 
 class Component {
     

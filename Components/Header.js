@@ -1,4 +1,6 @@
-import { render , createElement} from '../Core/Core.js';
+import { createElement} from '../Core/Core.js';
+import { render } from '../Core/Dom.js';
+
 import { router } from "../App.js";
 import Component from '../Core/Component.js'; // replace with the actual path
 

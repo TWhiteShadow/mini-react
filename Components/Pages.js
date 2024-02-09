@@ -1,4 +1,5 @@
-import { createElement, render, insertElement } from "../Core/Core.js"; // Import the render function
+import { createElement } from "../Core/Core.js"; // Import the render function
+import { render, insertElement } from '../Core/Dom.js';
 import Page from './Page.js';
 
 const container = document.querySelector("#root");
