@@ -1,4 +1,5 @@
 import { NotFound } from "../Components/Pages.js";
+import { renderComponent } from "./Core.js";
 
 class Router {
     constructor(routes) {
@@ -12,19 +13,14 @@ class Router {
         path = "/" + path.slice(3).join("/"); // /about for example
         const route = this.routes.find(route => route.path === path);
         if (route) {
-            this.renderComponent(route.component);
+            renderComponent(route.component);
         } else {
             // Handle 404 - Route Not Found
-            this.renderComponent(NotFound);
+            renderComponent(NotFound);
         }
     }
 
-    renderComponent(component) {
-        const appContainer = document.getElementById('root');
-        appContainer.innerHTML = '';
-        const componentInstance = new component();
-        appContainer.appendChild(componentInstance.render());
-    }
+    
 
     // Method to change the route without reloading the page
     navigateTo(path) {

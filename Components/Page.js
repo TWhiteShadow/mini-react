@@ -1,4 +1,4 @@
-import Component from "./Component.js";
+import Component from "../Core/Component.js";
 
 class Page extends Component{
     constructor() {

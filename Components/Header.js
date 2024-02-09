@@ -1,6 +1,6 @@
 import { render , createElement} from '../Core/Core.js';
 import { router } from "../App.js";
-import Component from './Component.js'; // replace with the actual path
+import Component from '../Core/Component.js'; // replace with the actual path
 
 class Header extends Component {
     constructor() {

@@ -74,4 +74,11 @@ function renderElements(elements, container){
     elements.forEach( element => { render(element, container) });
 }
 
-export { createElement, renderElements, insertElement, render , createRenderElement };
+function renderComponent(component) {
+    const appContainer = document.getElementById('root');
+    appContainer.innerHTML = '';
+    const componentInstance = new component();
+    appContainer.appendChild(componentInstance.render());
+}
+
+export { createElement, renderElements, insertElement, render , createRenderElement, renderComponent };

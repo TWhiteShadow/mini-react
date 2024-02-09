@@ -1,6 +1,6 @@
 import { createElement, insertElement } from "./Core/Core.js";
 import { render } from "./Core/Core.js"; // Import the render function
-import Router from "./Services/Router.js";
+import Router from "./Core/Router.js";
 import { Home , About, Test, CarView} from "./Components/Pages.js";
 // import header from "./Components/Header.js";
 import './Services/PropAccess.js';

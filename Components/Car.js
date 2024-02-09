@@ -1,4 +1,4 @@
-import Component from './Component.js'
+import Component from '../Core/Component.js'
 import { createElement } from '../Core/Core.js'
 
 class Car extends Component {
