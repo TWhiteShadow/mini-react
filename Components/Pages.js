@@ -6,6 +6,7 @@ const container = document.querySelector("#root");
 import Header from "./Header.js";
 import { router } from "../App.js";
 import Car from "./Car.js";
+import { type_check } from "../Services/TypeCheck.js";
 const header = new Header();
 
 class Home extends Page{
@@ -28,13 +29,11 @@ class CarView extends Page{
         section.id = "section1"
         container.appendChild(section);
         insertElement("#section1", createElement("div",{"id" : "carList"}));
-
         const carData = [
             { id: 1, model: "Toyota Camry", color: "Blue", year: 2020, mileage: 5000 },
             { id: 2, model: "Honda Accord", color: "Red", year: 2019, mileage: 7000 },
             { id: 3, model: "Ford Mustang", color: "Black", year: 2018, mileage: 10000 }
         ];
-
         const carContainer = document.querySelector("#carList");
         carData.forEach(car => {
             const carComponent = new Car(car);

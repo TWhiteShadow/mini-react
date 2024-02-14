@@ -1,7 +1,7 @@
 import { createElement } from './Core.js';
 
-function insertElement(parent, element){
-    const container =  document.querySelector(parent);
+function insertElement(parent, element) {
+    const container = document.querySelector(parent);
     render(element, container);
 }
 
@@ -15,29 +15,29 @@ function render(element, container) {
 }
 
 function createRenderElement(element) {
-    const dom = 
+    const dom =
         element.type === "TEXT_ELEMENT"
-        ? document.createTextNode(element.props.nodeValue)
-        : document.createElement(element.type);
+            ? document.createTextNode(element.props.nodeValue)
+            : document.createElement(element.type);
 
     const isEvent = key => key.startsWith("on");
     const isProperty = key => key !== "children" && !isEvent(key);
 
-    Object.keys(element.props)
-        .filter(isProperty)
-        .forEach(name => {
+    Object.entries(element.props)
+        .filter(([name]) => isProperty(name))
+        .forEach(([name, value]) => {
             if (!(dom instanceof Text)) {
-                dom.setAttribute(name, element.props[name]);
+                dom.setAttribute(name, value);
             } else {
-                dom[name] = element.props[name];
+                dom[name] = value;
             }
         });
 
-    Object.keys(element.props)
-        .filter(isEvent)
-        .forEach(name => {
+    Object.entries(element.props)
+        .filter(([name]) => isEvent(name))
+        .forEach(([name, handler]) => {
             const eventType = name.toLowerCase().substring(2);
-            dom.addEventListener(eventType, element.props[name]);
+            dom.addEventListener(eventType, handler);
         });
 
     element.props.children.forEach(child => render(child, dom));
@@ -45,8 +45,14 @@ function createRenderElement(element) {
     return dom;
 }
 
-function renderElements(elements, container){
-    elements.forEach( element => { render(element, container) });
+function renderElements(elements, container) {
+    elements.forEach(element => render(element, container));
+}
+function renderElement(element, props) {
+    console.log(typeof element);
+    if (typeof element === 'function') {
+        return new element(props).render(); // Créez une instance de la classe et appelez render()
+    }
 }
 
-export { insertElement, render, createRenderElement, renderElements };
+export { insertElement, render, createRenderElement, renderElements, renderElement };
