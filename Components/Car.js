@@ -37,44 +37,38 @@ class Car extends Component {
             type: 'object',
             props: {
                 id: 'number',
-                model: 'string',
-                color: 'string',
-                year: 'number',
-                mileage: 'number',
-            }
-        }
-    }
-    schema(){
-        return {
-            type: 'object',
-            props: {
-                id: 'number',
-                name: 'string',
+                Name: 'string',
                 photo: 'string',
-                acceleration: 'number',
-                cylinders: 'number',
-                displacement: 'number',
+                Miles_per_Gallon: 'string',
+                Cylinders: 'number',
+                Displacement: 'string',
                 Horsepower: 'number',
-                mpg: 'number',
-                origin: 'string',
-                weight: 'number',
-                year: 'string',
+                Weight_in_lbs: 'number',
+                Acceleration: 'string',
+                Year: 'string',
+                Origin: 'string'
             }
-        }
+        }        
     }
     
 
     render() {
         return createElement("div", { class: "car", "data-id": `${(this.state.id)}` },
-            createElement("h2", null, (this.state.model)),
-            createElement("p", null, `Color: ${(this.state.color)}`),
-            createElement("p", null, `Year: ${(this.state.year)}`),
-            createElement("p", null, `Mileage: ${(this.state.mileage)}'`),
-            createElement("p", null, `Click Counter: ${(this.state.count)}`),
-
-            createElement("button", { onClick : (e => this.handleClick()), id: `button-`+(this.state.id)}, "Increase Click")
+            createElement("h2", null, (this.state.name)),
+            createElement("img", { src: this.state.photo, alt: this.state.name }),
+            createElement("p", null, `Miles per Gallon: ${this.state.mpg}`),
+            createElement("p", null, `Cylinders: ${this.state.cylinders}`),
+            createElement("p", null, `Displacement: ${this.state.displacement}`),
+            createElement("p", null, `Horsepower: ${this.state.Horsepower}`),
+            createElement("p", null, `Weight in lbs: ${this.state.weight}`),
+            createElement("p", null, `Acceleration: ${this.state.acceleration}`),
+            createElement("p", null, `Year: ${this.state.year}`),
+            createElement("p", null, `Origin: ${this.state.origin}`),
+            createElement("p", null, `Click Counter: ${this.state.count}`),
+            createElement("button", { onClick: (e => this.handleClick()), id: `button-${(this.state.id)}` }, "Increase Click")
         );
-    }    
+    }
+    
 }
 
 export default Car;
