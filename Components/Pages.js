@@ -3,58 +3,56 @@ import { render, insertElement } from '../Core/Dom.js';
 import Page from './Page.js';
 
 const container = document.querySelector("#root");
-import Header from "./Header.js";
 import { router } from "../App.js";
 import Car from "./Car.js";
 import { type_check } from "../Services/TypeCheck.js";
-const header = new Header();
 
-class Home extends Page{
+// class Home extends Page{
 
-    render() {
+//     render() {
        
 
-        // Render the home page content
-        const element = document.createElement('div');
-        element.textContent = 'Home Page';
-        container.appendChild(element); // Append the element to the container
-        // Render the header
-        render(header.render(), container);
-        return element;
-    }
-}
-class CarView extends Page{
-    render(){
-        const section =  document.createElement('div');
-        section.id = "section1"
-        container.appendChild(section);
-        insertElement("#section1", createElement("div",{"id" : "carList"}));
-        const carData = [
-            { id: 1, model: "Toyota Camry", color: "Blue", year: 2020, mileage: 5000 },
-            { id: 2, model: "Honda Accord", color: "Red", year: 2019, mileage: 7000 },
-            { id: 3, model: "Ford Mustang", color: "Black", year: 2018, mileage: 10000 }
-        ];
-        const carContainer = document.querySelector("#carList");
-        carData.forEach(car => {
-            const carComponent = new Car(car);
-            carComponent.mount(carContainer);
-        });
-        render(header.render(), container);
-        return section
-    }
-}
+//         // Render the home page content
+//         const element = document.createElement('div');
+//         element.textContent = 'Home Page';
+//         container.appendChild(element); // Append the element to the container
+//         // Render the header
+//         render(header.render(), container);
+//         return element;
+//     }
+// }
+// class CarView extends Page{
+//     render(){
+//         const section =  document.createElement('div');
+//         section.id = "section1"
+//         container.appendChild(section);
+//         insertElement("#section1", createElement("div",{"id" : "carList"}));
+//         const carData = [
+//             { id: 1, model: "Toyota Camry", color: "Blue", year: 2020, mileage: 5000 },
+//             { id: 2, model: "Honda Accord", color: "Red", year: 2019, mileage: 7000 },
+//             { id: 3, model: "Ford Mustang", color: "Black", year: 2018, mileage: 10000 }
+//         ];
+//         const carContainer = document.querySelector("#carList");
+//         carData.forEach(car => {
+//             const carComponent = new Car(car);
+//             carComponent.mount(carContainer);
+//         });
+//         render(header.render(), container);
+//         return section
+//     }
+// }
 
-class About extends Page {
-    render() {
-        const element = document.createElement('div');
-        element.textContent = 'About Page';
-        container.appendChild(element); // Append the element to the container
+// class About extends Page {
+//     render() {
+//         const element = document.createElement('div');
+//         element.textContent = 'About Page';
+//         container.appendChild(element); // Append the element to the container
         
-        // Render the header
-        render(header.render(), container);
-        return element;
-    }
-}
+//         // Render the header
+//         render(header.render(), container);
+//         return element;
+//     }
+// }
 
 class NotFound extends Page {
     render() {
@@ -79,4 +77,4 @@ class Test {
     }
 }
 
-export { Home, About, NotFound , Test, CarView};
+export { NotFound , Test};

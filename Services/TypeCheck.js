@@ -1,12 +1,21 @@
 export function type_check(object, schema) {
-    var data = object.props
-    if(typeof data === schema.type){
-        // console.log("data is an object", "\n", schema.props)
-        return checkObject(data, schema.props);
-    }else{
-        return typeof value === schema;
+    if (typeof object !== 'object' || !schema || schema.type !== 'object' || !schema.props) {
+        return false; // If object is not an object or schema is not provided or schema is not an object or schema doesn't have props, return false
     }
+    
+    for (const prop in schema.props) {
+        if (!(prop in object)) {
+            return false; // If object doesn't have a property defined in schema, return false
+        }
+
+        if (typeof object[prop] !== schema.props[prop]) {
+            return false; // If the type of property in object doesn't match the type defined in schema, return false
+        }
+    }
+
+    return true; // If all properties match, return true
 }
+
 
 function checkObject(value, props) {
     // console.log(value, props)

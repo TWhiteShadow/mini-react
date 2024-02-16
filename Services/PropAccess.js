@@ -10,8 +10,8 @@ Object.prototype.propAccess = function(path) {
     });
     return result;
 }
-String.prototype.interpolate = function(object) {
+String.prototype.interpolate = function(Object) {
     // var path = this.replace(/\{|\}/g,""); // on replace pour ne garder que le path
     var path = this.replace(/^\{+|\}+$/g,""); // on replace pour ne garder que le path
-    return object.propAccess(path);
+    return Object.propAccess(path);
 }

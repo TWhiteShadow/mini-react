@@ -7,10 +7,16 @@ class Car extends Component {
         const id = this.props.id;
         this.state = {
             id: id,
-            model: this.props.model,
-            color: this.props.color,
-            year: this.props.year,
-            mileage: this.props.mileage,
+            name: this.props.Name,
+            photo: this.props.photo,
+            acceleration: this.props.Acceleration,
+            cylinders: this.props.Cylinders,
+            displacement: this.props.Displacement,
+            Horsepower: this.props.Horsepower,
+            mpg: this.props.Miles_per_Gallon,
+            origin: this.props.Origin,
+            weight: this.props.Weight_in_lbs,
+            year: this.props.Year,
             count: localStorage.getItem("car-"+id) !== null ? parseInt(localStorage.getItem("car-"+id)) : 0
         };
         
@@ -26,15 +32,47 @@ class Car extends Component {
         this.setState({ color: newColor });
     }
 
-    render() {
-        return createElement("div", { class: "car", "data-id": `${'{{id}}'.interpolate(this.state)}` },
-            createElement("h2", null, '{{model}}'.interpolate(this.state)),
-            createElement("p", null, `Color: ${'{{color}}'.interpolate(this.state)}`),
-            createElement("p", null, `Year: ${'{{year}}'.interpolate(this.state)}`),
-            createElement("p", null, `Mileage: ${'{{mileage}}'.interpolate(this.state)}`),
-            createElement("p", null, `Click Counter: ${'{{count}}'.interpolate(this.state)}`),
+    schema(){
+        return {
+            type: 'object',
+            props: {
+                id: 'number',
+                model: 'string',
+                color: 'string',
+                year: 'number',
+                mileage: 'number',
+            }
+        }
+    }
+    schema(){
+        return {
+            type: 'object',
+            props: {
+                id: 'number',
+                name: 'string',
+                photo: 'string',
+                acceleration: 'number',
+                cylinders: 'number',
+                displacement: 'number',
+                Horsepower: 'number',
+                mpg: 'number',
+                origin: 'string',
+                weight: 'number',
+                year: 'string',
+            }
+        }
+    }
+    
 
-            createElement("button", { onClick : (e => this.handleClick()), id: `button-`+'{{id}}'.interpolate(this.state)}, "Increase Click")
+    render() {
+        return createElement("div", { class: "car", "data-id": `${(this.state.id)}` },
+            createElement("h2", null, (this.state.model)),
+            createElement("p", null, `Color: ${(this.state.color)}`),
+            createElement("p", null, `Year: ${(this.state.year)}`),
+            createElement("p", null, `Mileage: ${(this.state.mileage)}'`),
+            createElement("p", null, `Click Counter: ${(this.state.count)}`),
+
+            createElement("button", { onClick : (e => this.handleClick()), id: `button-`+(this.state.id)}, "Increase Click")
         );
     }    
 }

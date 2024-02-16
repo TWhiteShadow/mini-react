@@ -1,4 +1,5 @@
 import { createElement } from './Core.js';
+import Component from './Component.js';
 
 function insertElement(parent, element) {
     const container = document.querySelector(parent);
@@ -49,10 +50,16 @@ function renderElements(elements, container) {
     elements.forEach(element => render(element, container));
 }
 function renderElement(element, props) {
-    console.log(typeof element);
     if (typeof element === 'function') {
-        return new element(props).render(); // Créez une instance de la classe et appelez render()
+        if (element.prototype instanceof Component) {
+            // If it's a class component, instantiate the component and call its render method
+            return new element(props).render();
+        } else {
+            // If it's a functional component, call the function and pass props
+            return element(props);
+        }
     }
 }
+
 
 export { insertElement, render, createRenderElement, renderElements, renderElement };

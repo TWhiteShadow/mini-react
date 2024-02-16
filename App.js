@@ -1,7 +1,36 @@
 import Router from "./Core/Router.js";
 import Page from "./Components/Page.js"; // Import the provided routes object
 import { createElement } from "./Core/Core.js";
+import List from "./Components/List.js";
 
+
+
+
+async function fetchCars() {
+    try {
+        const response = await fetch("http://127.0.0.1:8003/cars?type=json", {
+            method: 'GET',
+            mode: 'cors',
+        });
+        const data = await response.json();
+        return data;
+    } catch (error) {
+        console.error('Error fetching cars:', error);
+        return [];
+    }
+}
+
+
+const cars = [
+      { id: 1, model: "Toyota Camry", color: "Blue", year: 2020, mileage: 5000 },
+      { id: 2, model: "Honda Accord", color: "Red", year: 2019, mileage: 7000 },
+      { id: 3, model: "Ford Mustang", color: "Black", year: 2018, mileage: 10000 }
+];
+
+const data = await fetchCars();
+const carsApi = [];
+data.forEach((car) => carsApi.push(car));
+console.log(carsApi);
 
 var toto = {
     home: {
@@ -12,11 +41,11 @@ var toto = {
         menu: [
           {
             label: 'Calculatrice',
-            href: '#/calculatrice',
+            href: '/calculatrice',
           },
           {
             label: 'Voitures',
-            href: '#/voitures',
+            href: '/voitures',
           },
         ]
       },
@@ -35,14 +64,17 @@ var toto = {
         menu: [
           {
             label: 'Accueil',
-            href: '#/',
+            href: '/',
           },
           {
             label: 'Calculatrice',
-            href: '#/calculatrice',
+            href: '/calculatrice',
           },
         ]
       },
+      children: [
+        createElement(List, null , {data: carsApi}),
+      ],
     },
   };
 
@@ -52,8 +84,6 @@ const routes = Object.entries(toto).map(([key, value]) => ({
     props: value.props,
     children: value.children,
 }));
-
-console.log(routes);
 
 const router = new Router(routes);
 export { router }; // Export router here

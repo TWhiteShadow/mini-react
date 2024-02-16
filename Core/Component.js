@@ -15,6 +15,7 @@ class Component {
         this.prevState = this.state;
         this.state = { ...this.state, ...newState };
         if (this.shouldRefresh()) {
+            console.log("The component will be refreshed");
             this.refresh();
         }
     }
@@ -33,6 +34,7 @@ class Component {
 
     refresh() {
         const container = this._container;
+        console.log('Container ' + container)
         if (!container) return; // Do nothing if the component is not yet rendered
     
         // Create a new element with the updated content
