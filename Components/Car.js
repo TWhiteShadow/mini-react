@@ -71,7 +71,7 @@ class Car extends Component {
             createElement("p", null, `Origin: ${this.state.origin}`),
             ),
             createElement("div", { class: "learn-more-container" },
-            createElement("a", { class: "learn-more", href: `cars/${this.state.id}` },
+            createElement("a", { class: "learn-more", href: `voitures/${this.state.id}` },
             createElement("span", { class: "circle", "aria-hidden": "true" },
             createElement("span", { class: "icon arrow" })
             ),
