@@ -90,6 +90,26 @@ var toto = {
            createElement(CarDetails, { carId: 305 }, null ),
       ],
     },
+    voituresEdit : {
+        url: '/voitures/:id/edit',
+        type: Page,
+        props: {
+            title: 'Edition de la voiture',
+            menu: [
+                {
+                    label: 'Accueil',
+                    href: '/',
+                },
+                {
+                    label: 'Voitures',
+                    href: '/voitures',
+                },
+            ]
+        },
+        children: [
+             createElement(CarDetails, { carId: 305 }, null ),
+        ],
+      },
   };
 
 const routes = Object.entries(toto).map(([key, value]) => ({

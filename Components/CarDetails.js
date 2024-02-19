@@ -6,7 +6,6 @@ import Car from "./Car.js";
 
 class CarDetails extends Component {
     constructor(props, children) {
-        console.log(props, children)
         super(props);
         this.children = props.children || []; // Assurez-vous que children est un tableau
         this.propsId = props.id;

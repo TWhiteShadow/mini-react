@@ -58,10 +58,10 @@ class Router {
             // Pass path parameters as props
             Object.assign(route.children[0].props, pathParams); // ajout du param id dans la liste des children
             console.log("les children ici" , route.children);
-            
+
 
     
-            renderComponent(route.component, props, route.children); // Render the component with props and children
+            renderComponent(route.component, route.props, route.children); // Render the component with props and children
         } else {
             // Handle 404 - Route Not Found
             renderComponent(NotFound);
