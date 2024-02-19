@@ -13,6 +13,7 @@ class List extends Component {
     render() {
         const container = document.createElement('div');
         container.id = 'content';
+        container.style = "margin: 0 auto;display: grid;gap: 1rem;grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));gap: 20px;justify-content: space-between;"
         if (this.children.length > 0) {
             // Créez une instance de Car pour accéder à sa méthode schema()
             const carInstance = new Car({});

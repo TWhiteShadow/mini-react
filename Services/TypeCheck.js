@@ -1,20 +1,22 @@
 export function type_check(object, schema) {
     if (typeof object !== 'object' || !schema || schema.type !== 'object' || !schema.props) {
-        return false; // If object is not an object or schema is not provided or schema is not an object or schema doesn't have props, return false
+        return false; // Si l'objet n'est pas un objet ou si le schéma n'est pas fourni, ou si le schéma n'est pas un objet ou si le schéma n'a pas de propriétés, retourne false
     }
     
     for (const prop in schema.props) {
         if (!(prop in object)) {
-            return false; // If object doesn't have a property defined in schema, return false
+            return false; // Si l'objet n'a pas une propriété définie dans le schéma, retourne false
         }
 
-        if (typeof object[prop] !== schema.props[prop]) {
-            return false; // If the type of property in object doesn't match the type defined in schema, return false
+        const propType = schema.props[prop];
+        if (propType !== 'null' && object[prop] !== null && typeof object[prop] !== propType) {
+            return false; // Si le type de propriété dans l'objet ne correspond pas au type défini dans le schéma, retourne false
         }
     }
 
-    return true; // If all properties match, return true
+    return true; // Si toutes les propriétés correspondent, retourne true
 }
+
 
 
 function checkObject(value, props) {
