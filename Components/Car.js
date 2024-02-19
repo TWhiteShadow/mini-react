@@ -3,7 +3,6 @@ import { createElement } from '../Core/Core.js'
 
 class Car extends Component {
     constructor(props) {
-        console.log(props.id);
         super(props);
         const id = this.props.id;
         this.state = {

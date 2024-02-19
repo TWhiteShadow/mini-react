@@ -51,13 +51,15 @@ class Router {
             for (let i = 0; i < routeParts.length; i++) {
                 if (routeParts[i].startsWith(":")) {
                     const paramName = routeParts[i].slice(1); // Remove ':' from parameter name
-                    pathParams[paramName] = pathParts[i];
+                    pathParams[paramName] = currentPathParts[i];
                 }
             }
     
             // Pass path parameters as props
-            Object.assign(props, route.props, pathParams);
-            console.log("les params ici" ,props);
+            Object.assign(route.children[0].props, pathParams); // ajout du param id dans la liste des children
+            console.log("les children ici" , route.children);
+            
+
     
             renderComponent(route.component, props, route.children); // Render the component with props and children
         } else {

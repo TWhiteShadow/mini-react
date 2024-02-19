@@ -29,7 +29,6 @@ const cars = [
 const data = await fetchCars();
 const carsApi = [];
 data.forEach((car) => carsApi.push(car));
-console.log(carsApi);
 
 var toto = {
     home: {
@@ -88,7 +87,7 @@ var toto = {
           ]
       },
       children: [
-          await createElement(CarDetails, { carId: 305 }, null ),
+           createElement(CarDetails, { carId: 305 }, null ),
       ],
     },
   };
