@@ -3,6 +3,7 @@ import { createElement } from '../Core/Core.js'
 
 class Car extends Component {
     constructor(props) {
+        console.log(props.id);
         super(props);
         const id = this.props.id;
         this.state = {
@@ -50,12 +51,16 @@ class Car extends Component {
             }
         }        
     }
-    
 
     render() {
         return createElement("div", { class: "car", "data-id": `${(this.state.id)}` },
-            createElement("h2", null, (this.state.name)),
-            createElement("img", { src: this.state.photo, alt: this.state.name }),
+        createElement("div", { class: "car-header" },
+            createElement("div", { class: "car-image" },
+                createElement("img", { src: this.state.photo, alt: `${this.state.name} image` })
+            ),
+            createElement("h2", null, (this.state.name))
+        ),
+        createElement("div", { class: "car-content" },
             createElement("p", null, `Miles per Gallon: ${this.state.mpg}`),
             createElement("p", null, `Cylinders: ${this.state.cylinders}`),
             createElement("p", null, `Displacement: ${this.state.displacement}`),
@@ -64,9 +69,17 @@ class Car extends Component {
             createElement("p", null, `Acceleration: ${this.state.acceleration}`),
             createElement("p", null, `Year: ${this.state.year}`),
             createElement("p", null, `Origin: ${this.state.origin}`),
+            ),
+            createElement("div", { class: "learn-more-container" },
+            createElement("a", { class: "learn-more", href: `cars/${this.state.id}` },
+            createElement("span", { class: "circle", "aria-hidden": "true" },
+            createElement("span", { class: "icon arrow" })
+            ),
+            createElement("span", { class: "learn-more-text" }, "Book now!")
+            ),
+            createElement("button", { onClick: (e => this.handleClick()), id: `button-${(this.state.id)}` }, "Increase Click"),
             createElement("p", null, `Click Counter: ${this.state.count}`),
-            createElement("button", { onClick: (e => this.handleClick()), id: `button-${(this.state.id)}` }, "Increase Click")
-        );
+        ));
     }
     
 }

@@ -2,13 +2,12 @@ import Router from "./Core/Router.js";
 import Page from "./Components/Page.js"; // Import the provided routes object
 import { createElement } from "./Core/Core.js";
 import List from "./Components/List.js";
-
-
-
+import CarDetails from "./Components/CarDetails.js";
 
 async function fetchCars() {
     try {
-        const response = await fetch("http://127.0.0.1:8003/cars?type=json", {
+        const response = await fetch("http://172.26.15.76:8003/cars?type=json", {
+        // const response = await fetch("http://127.0.0.1:8003/cars?type=json", {
             method: 'GET',
             mode: 'cors',
         });
@@ -40,10 +39,6 @@ var toto = {
         title: 'Bienvenue sur Lauvni passion auto',
         menu: [
           {
-            label: 'Calculatrice',
-            href: '/calculatrice',
-          },
-          {
             label: 'Voitures',
             href: '/voitures',
           },
@@ -63,17 +58,37 @@ var toto = {
         title: 'Liste des Voitures en stock',
         menu: [
           {
-            label: 'Accueil',
-            href: '/',
+              label: 'Accueil',
+              href: '/',
           },
           {
-            label: 'Calculatrice',
-            href: '/calculatrice',
+              label: 'Voitures',
+              href: '/voitures',
           },
         ]
       },
       children: [
         createElement(List, null , {data: carsApi}),
+      ],
+    },
+    voituresDetail : {
+      url: '/voitures/:id',
+      type: Page,
+      props: {
+          title: 'Détails de la voiture',
+          menu: [
+              {
+                  label: 'Accueil',
+                  href: '/',
+              },
+              {
+                  label: 'Voitures',
+                  href: '/voitures',
+              },
+          ]
+      },
+      children: [
+          await createElement(CarDetails, { carId: 305 }, null ),
       ],
     },
   };
