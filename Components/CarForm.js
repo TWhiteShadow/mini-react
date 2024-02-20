@@ -1,5 +1,7 @@
 import Component from '../Core/Component.js'
 import { createElement } from '../Core/Core.js'
+import { type_check } from '../Services/TypeCheck.js';
+import Car from './Car.js';
 
 class CarForm extends Component {
     constructor(props) {
@@ -44,7 +46,10 @@ class CarForm extends Component {
                 const data = await response.json();
                 resolve(data);
             }).then(data => {
+
                 // Créez une instance de Car pour accéder à sa méthode schema()
+                const carInstance = new Car(data);
+                const carSchema = carInstance.schema(); 
 
                 if (type_check(data, carSchema)) {
                     this.state = {

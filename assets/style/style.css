@@ -18,6 +18,16 @@ body {
     padding: 30px;
 }
 
+.navbar{
+    height: 50px;
+    margin-bottom: 25px;
+    background-color: white !important;
+    display: flex;
+    border-radius: 5rem !important;
+    align-items: center;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
 
 .cars-container {
     margin: 0 auto;
