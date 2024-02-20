@@ -107,7 +107,7 @@ var toto = {
             ]
         },
         children: [
-             createElement(CarDetails, { carId: 305 }, null ),
+             createElement(CarForm, { carId: 305 }, null ),
         ],
       },
   };

@@ -43,14 +43,13 @@ class Router {
         });
     
         if (route) {
-            const props = {}; // Initialize props object to pass to component
-            const pathParams = {}; // Initialize object to hold path parameters
+            const pathParams = {}; 
     
             // Extract path parameters
             const routeParts = route.path.split("/");
             for (let i = 0; i < routeParts.length; i++) {
                 if (routeParts[i].startsWith(":")) {
-                    const paramName = routeParts[i].slice(1); // Remove ':' from parameter name
+                    const paramName = routeParts[i].slice(1); // Remove ':' from parameter name ":id" -> "id"
                     pathParams[paramName] = currentPathParts[i];
                 }
             }
