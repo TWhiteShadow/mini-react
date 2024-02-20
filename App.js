@@ -3,6 +3,7 @@ import Page from "./Components/Page.js"; // Import the provided routes object
 import { createElement } from "./Core/Core.js";
 import List from "./Components/List.js";
 import CarDetails from "./Components/CarDetails.js";
+import CarForm from "./Components/CarForm.js";
 
 async function fetchCars() {
     try {

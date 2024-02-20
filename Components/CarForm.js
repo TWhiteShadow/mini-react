@@ -1,6 +1,5 @@
 import Component from '../Core/Component.js'
 import { createElement } from '../Core/Core.js'
-import CarForm from '../Components/CarForm.js'
 
 class CarForm extends Component {
     constructor(props) {
